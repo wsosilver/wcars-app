@@ -1,6 +1,5 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import '../../../domain/entities/user/user_entity.dart';
+import 'package:wcars/app/modules/vitrine/vitrine_controller.dart';
 
 class VitrinePage extends StatefulWidget {
   const VitrinePage({Key? key}) : super(key: key);
@@ -10,8 +9,11 @@ class VitrinePage extends StatefulWidget {
 }
 
 class VitrinePageState extends State<VitrinePage> {
+  final controller = VitrineController();
+
   @override
   void initState() {
+    controller.ini();
     super.initState();
   }
 

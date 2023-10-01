@@ -26,7 +26,7 @@ class CarroEntity {
       nome: json['nome'],
       marca: json['marca'],
       modelo: json['modelo'],
-      preco: json['preco'],
+      preco: json['preco'].toDouble(),
       foto: json['foto'],
     );
   }

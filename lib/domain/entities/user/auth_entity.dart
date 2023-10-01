@@ -1,10 +1,10 @@
-import 'package:wcars/domain/entities/User/user_entity.dart';
 import 'package:flutter/foundation.dart';
+import 'package:wcars/domain/entities/user/user_entity.dart';
 
 @immutable
 class AuthEntity {
   final String? token;
-  final UserEntity? user;
+  final UsuarioEntity? user;
   const AuthEntity({
     required this.token,
     required this.user,
@@ -13,7 +13,7 @@ class AuthEntity {
   factory AuthEntity.fromMap(Map<String, dynamic> map) {
     return AuthEntity(
       token: map['access_token'],
-      user: UserEntity.fromMap(map['user']),
+      user: UsuarioEntity.fromMap(map['user']),
     );
   }
 }

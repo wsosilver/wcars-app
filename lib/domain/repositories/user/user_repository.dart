@@ -6,7 +6,7 @@ abstract class UserRepository {
 
   // Future<ResourceData<int?>> checkUser(String cpfCnpj);
   // Future<ResourceData<AuthEntity>> login(dynamic credential);
-  // Future<ResourceData<UserEntity?>> getUser(String cpfCnpj);
+  // Future<ResourceData<UsuarioEntity?>> getUser(String cpfCnpj);
   // Future<ResourceData<List<EmailEntity>?>> getEmails(String cpfCnpj);
   // Future<ResourceData> sendToken(dynamic params);
   // Future<ResourceData> sendFcmToken(dynamic params);
