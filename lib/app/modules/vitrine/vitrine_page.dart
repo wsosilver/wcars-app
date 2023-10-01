@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wcars/app/constants/route_name.dart';
 import 'package:wcars/app/modules/vitrine/vitrine_controller.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:wcars/app/styles/app_images.dart';
@@ -29,7 +30,9 @@ class VitrinePageState extends State<VitrinePage> {
     return Scaffold(
         appBar: AppBar(
           actions: [
-            IconButton(onPressed: () => print(''), icon: Icon(Icons.person_3))
+            IconButton(
+                onPressed: () => Navigator.pushNamed(context, RouteName.login),
+                icon: Icon(Icons.person_3))
           ],
           title: Text(
             'WCars - Sua melhor opção',

@@ -15,12 +15,12 @@ class AuthRemoteDataSource {
 
   Future<ResourceData<AuthEntity>> login(dynamic credential) async {
     try {
-      final doc = credential['username'].replaceAll(RegExp(r'[^\w\s]+'), '');
-      final pass = credential['password'];
+      final usuario = credential['usuario'];
+      final senha = credential['senha'];
 
       final result = await _dio.post('/auth/login', data: {
-        'username': doc,
-        'password': pass,
+        'login': usuario,
+        'pass': senha,
       });
 
       return ResourceData(
