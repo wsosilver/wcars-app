@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:wcars/app/constants/route_name.dart';
 import 'package:wcars/app/modules/usuario/usuario_controller.dart';
 import 'package:wcars/app/styles/app_images.dart';
 import 'package:wcars/app/utils/ui_helper.dart';
 
-import '../../../domain/utils/status.dart';
-import '../../utils/validators.dart';
-import '../../widgets/buttons/elevated_button_widget.dart';
+import '../../../../domain/utils/status.dart';
+import '../../../utils/validators.dart';
+import '../../../widgets/buttons/elevated_button_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class LoginPageState extends State<LoginPage> {
     if (statusLogin.status == Status.failed) {
       UIHelper.showInSnackBar('Login ou senha incorreta', context);
     } else if (statusLogin.status == Status.success) {
-      Navigator.pop(context);
+      Navigator.popAndPushNamed(context, RouteName.home);
     }
   }
 

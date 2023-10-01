@@ -12,6 +12,6 @@ class AppModule extends Module {
   List<ModularRoute> get routes => [
         ModuleRoute(RouteName.splash, module: SplashModule()),
         ModuleRoute(RouteName.vitrine, module: VitrineModule()),
-        ModuleRoute(RouteName.login, module: UsuarioModule()),
+        ModuleRoute(RouteName.usuario, module: UsuarioModule()),
       ];
 }
