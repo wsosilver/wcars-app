@@ -13,7 +13,8 @@ class CarroRemoteDataSource {
 
   Future<ResourceData<List<CarroEntity>>> getListCarros(int page) async {
     try {
-      final result = await _dio.get('carros?page=$page');
+      final int? teste = null;
+      final result = await _dio.get('carros');
       return ResourceData(
           status: Status.success,
           data: CarroEntity.fromMapList(result['data']));

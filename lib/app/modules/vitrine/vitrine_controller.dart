@@ -22,12 +22,26 @@ abstract class VitrineControllerBase with Store {
 
   @observable
   ResourceData<List<CarroEntity>> carros =
-      const ResourceData(status: Status.initial);
+      const ResourceData(status: Status.initial, data: []);
+
+  @observable
+  List<CarroEntity> listCarrosAux = [];
+
+  filterCarros(String search) {
+    listCarrosAux = carros.data!
+        .where((carro) =>
+            carro.nome.toLowerCase().contains(search.toLowerCase()) ||
+            carro.marca.contains(search.toLowerCase()) ||
+            carro.modelo.contains(search.toLowerCase()))
+        .toList();
+  }
 
   @action
-  Future<ResourceData<List<CarroEntity>>> getListCarros(int page) async {
-    carros = const ResourceData(status: Status.loading);
+  getListCarros(int page) async {
+    carros = const ResourceData(status: Status.loading, data: []);
     carros = await _getCarros(page);
-    return carros;
+    if (carros.status == Status.success) {
+      listCarrosAux = carros.data!;
+    }
   }
 }

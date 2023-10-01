@@ -6,7 +6,7 @@ import 'app_text_theme.dart';
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
       brightness: Brightness.light,
-      textTheme: const CustomTextTheme(),
+      // textTheme: const CustomTextTheme(),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
               backgroundColor:
@@ -20,7 +20,7 @@ class AppTheme {
 
   static ThemeData darkTheme = ThemeData(
       brightness: Brightness.dark,
-      textTheme: const CustomTextTheme(),
+      // textTheme: const CustomTextTheme(),
       primarySwatch: AppColorScheme.mcgpalette0,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
