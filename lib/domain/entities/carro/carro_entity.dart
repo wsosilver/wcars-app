@@ -1,5 +1,5 @@
 class CarroEntity {
-  final int id;
+  final int? id;
   final String nome;
   final String marca;
   final String modelo;
@@ -7,7 +7,7 @@ class CarroEntity {
   final String foto;
 
   CarroEntity(
-      {required this.id,
+      {this.id,
       required this.nome,
       required this.marca,
       required this.modelo,

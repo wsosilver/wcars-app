@@ -13,4 +13,10 @@ class CarroRepositoryImpl implements CarroRepository {
     final resource = await carroRemoteDataSource.getListCarros(page);
     return resource;
   }
+
+  @override
+  Future<ResourceData> adicionar(CarroEntity carro) async {
+    final resource = await carroRemoteDataSource.adicionar(carro);
+    return resource;
+  }
 }

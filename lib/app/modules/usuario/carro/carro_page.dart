@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:wcars/app/modules/usuario/home/home_controller.dart';
+import 'package:wcars/app/modules/usuario/carro/carro_controller.dart';
 import 'package:wcars/app/styles/app_images.dart';
 import 'package:wcars/app/widgets/buttons/elevated_button_widget.dart';
 import 'package:wcars/domain/entities/carro/carro_entity.dart';
@@ -17,7 +17,7 @@ class CarroPage extends StatefulWidget {
   final CarroEntity? carro;
 }
 
-final controller = HomeController();
+final controller = CarroController();
 
 class CarroPageState extends State<CarroPage> {
   TextEditingController nomeController = TextEditingController();
@@ -28,18 +28,26 @@ class CarroPageState extends State<CarroPage> {
 
   @override
   void initState() {
-    controller.ini();
     widget.carro != null ? preencherFormulario() : null;
     super.initState();
   }
-
-  salvar() {}
 
   preencherFormulario() {
     nomeController.text = widget.carro!.nome;
     marcaController.text = widget.carro!.marca;
     modeloController.text = widget.carro!.modelo;
     precoController.text = '${widget.carro!.preco}';
+  }
+
+  salvar() {
+    CarroEntity carro = CarroEntity(
+        id: widget.carro?.id,
+        nome: nomeController.text,
+        marca: marcaController.text,
+        modelo: modeloController.text,
+        preco: 1,
+        foto: 'foto');
+    controller.salvar(carro);
   }
 
   @override
@@ -128,8 +136,9 @@ class CarroPageState extends State<CarroPage> {
                   Observer(builder: (_) {
                     return ElevatedButtonWidget(
                       text: 'Salvar',
-                      onPressed: () =>
-                          {if (_formKey.currentState!.validate()) {}},
+                      onPressed: () => {
+                        if (_formKey.currentState!.validate()) {salvar()}
+                      },
                     );
                   }),
                 ]),

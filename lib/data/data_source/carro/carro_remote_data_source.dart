@@ -23,4 +23,23 @@ class CarroRemoteDataSource {
           status: Status.failed, data: null, error: ErrorMapper.from(e));
     }
   }
+
+  Future<ResourceData> adicionar(CarroEntity carro) async {
+    try {
+      var formData = FormData.fromMap({
+        "nome": carro.nome,
+        "marca": carro.marca,
+        "modelo": carro.modelo,
+        "preco": carro.preco,
+        'file': await MultipartFile.fromFile(
+            'D:/WCars/wcarss-app/assets/images/cerus_garantia.png',
+            filename: 'upload.jpg')
+      });
+      await _dio.post('carros', data: formData);
+      return ResourceData(status: Status.success);
+    } on DioException catch (e) {
+      return ResourceData(
+          status: Status.failed, data: null, error: ErrorMapper.from(e));
+    }
+  }
 }

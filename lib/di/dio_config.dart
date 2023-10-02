@@ -15,6 +15,7 @@ import '../data/remote/interceptors/auth_interceptor.dart';
 import '../data/repositories/auth/auth_repository_impl.dart';
 import '../data/repositories/carro/carro_repository_impl.dart';
 import '../domain/usecases/auth/login.use_case.dart';
+import '../domain/usecases/carro/adicionar_carro.use_case.dart';
 
 Future<GetIt> initGetIt(GetIt get) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,6 +38,8 @@ Future<GetIt> initGetIt(GetIt get) async {
       () => CarroRemoteDataSource(get<CustomDio>()));
   gh.factory<GetListCarrosUseCase>(
       () => GetListCarrosUseCase(get<CarroRepository>()));
+  gh.factory<AdcionarCarroUseCase>(
+      () => AdcionarCarroUseCase(get<CarroRepository>()));
 
   gh.singleton<Dio>(dio);
   gh.singleton<SharedPreferencesManager>(SharedPreferencesManager());
