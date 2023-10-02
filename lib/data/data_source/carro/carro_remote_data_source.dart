@@ -31,9 +31,7 @@ class CarroRemoteDataSource {
         "marca": carro.marca,
         "modelo": carro.modelo,
         "preco": carro.preco,
-        'file': await MultipartFile.fromFile(
-            'D:/WCars/wcarss-app/assets/images/cerus_garantia.png',
-            filename: 'upload.jpg')
+        'file': await MultipartFile.fromFile(carro.foto)
       });
       await _dio.post('carros', data: formData);
       return ResourceData(status: Status.success);

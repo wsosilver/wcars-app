@@ -16,7 +16,7 @@ class CustomDio {
     _dio.interceptors.add(_authInterceptor);
     _dio.interceptors.add(LogInterceptor(
         requestBody: true, responseBody: true, requestHeader: true));
-    _dio.options.baseUrl = "http://192.168.0.8:3000/";
+    _dio.options.baseUrl = "http://10.0.0.59:3000/";
   }
 
   Future<T> delete<T>(

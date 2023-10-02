@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:wcars/app/modules/usuario/carro/carro_controller.dart';
+import 'package:wcars/app/styles/app_color_scheme.dart';
 import 'package:wcars/app/styles/app_images.dart';
 import 'package:wcars/app/widgets/buttons/elevated_button_widget.dart';
 import 'package:wcars/domain/entities/carro/carro_entity.dart';
@@ -25,7 +29,9 @@ class CarroPageState extends State<CarroPage> {
   TextEditingController modeloController = TextEditingController();
   TextEditingController precoController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  final ImagePicker picker = ImagePicker();
+  XFile? image;
+  File? file;
   @override
   void initState() {
     widget.carro != null ? preencherFormulario() : null;
@@ -46,8 +52,16 @@ class CarroPageState extends State<CarroPage> {
         marca: marcaController.text,
         modelo: modeloController.text,
         preco: 1,
-        foto: 'foto');
+        foto: image!.path);
     controller.salvar(carro);
+  }
+
+  getImage() async {
+    image = await picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      file = image != null ? File(image!.path) : null;
+    });
   }
 
   @override
@@ -66,13 +80,37 @@ class CarroPageState extends State<CarroPage> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CircleAvatar(
-                    radius: 120,
-                    backgroundColor: Colors.transparent,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        AppImages.carro,
+                  Container(
+                    padding: EdgeInsets.only(top: 40),
+                    child: GestureDetector(
+                      onTap: () => getImage(),
+                      child: Container(
+                        height: 120,
+                        width: 120,
+                        color: AppColorScheme.colorWpp,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SizedBox(
+                              height: 180,
+                              width: 180,
+                              child: image == null
+                                  ? Image.asset(
+                                      AppImages.carro,
+                                      fit: BoxFit.fill,
+                                    )
+                                  : Image.file(
+                                      file!,
+                                      fit: BoxFit.cover,
+                                    ),
+                            ),
+                            Icon(
+                              Icons.collections,
+                              color: AppColorScheme.white.withOpacity(0.8),
+                              size: 40,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
