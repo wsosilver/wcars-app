@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:wcars/app/constants/route_name.dart';
-import '../../../domain/entities/user/user_entity.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -35,15 +34,7 @@ class SplashPageState extends State<SplashPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            height: 80,
-            width: 80,
-            child: Text('W-Cars'),
-          ),
-          Text(
-            'realizando sonhos',
-            style: Theme.of(context).textTheme.headlineMedium!,
-          ),
+          Text('W-Cars'),
         ],
       ),
     ));

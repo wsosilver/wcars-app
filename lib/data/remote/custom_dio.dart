@@ -16,15 +16,15 @@ class CustomDio {
     _dio.interceptors.add(_authInterceptor);
     _dio.interceptors.add(LogInterceptor(
         requestBody: true, responseBody: true, requestHeader: true));
-    _dio.options.baseUrl = "http://10.0.0.59:3000/";
+    _dio.options.baseUrl = "http://192.168.0.8:3000/";
   }
 
   Future<T> delete<T>(
     String path, {
     data,
-    required Map<String, dynamic> queryParameters,
-    required Map<String, dynamic> headers,
-    required Map<String, dynamic> extra,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
   }) async {
     final res = await _dio.delete<T>(
       path,

@@ -1,8 +1,11 @@
 import 'package:wcars/domain/entities/carro/carro_entity.dart';
+import 'package:wcars/domain/entities/carro/config_list_carros.dart';
 
 import '../../utils/resource_data.dart';
 
 abstract class CarroRepository {
-  Future<ResourceData<List<CarroEntity>>> getListCarros(int page);
+  Future<ResourceData<ConfigList>> getListCarros(int? page);
   Future<ResourceData> adicionar(CarroEntity carro);
+  Future<ResourceData> alterar(CarroEntity carro);
+  Future<ResourceData> excluir(int id);
 }

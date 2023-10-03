@@ -6,6 +6,8 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:wcars/data/local/shared_preferences.dart';
 import 'package:wcars/domain/repositories/carro/carro_repository.dart';
+import 'package:wcars/domain/usecases/carro/alterar_carro.use_case%20copy.dart';
+import 'package:wcars/domain/usecases/carro/excluir_carro.use_case%20copy.dart';
 import 'package:wcars/domain/usecases/carro/get_list_carros.use_case.dart';
 
 import '../data/data_source/auth/auth_local_data_source.dart';
@@ -40,6 +42,10 @@ Future<GetIt> initGetIt(GetIt get) async {
       () => GetListCarrosUseCase(get<CarroRepository>()));
   gh.factory<AdcionarCarroUseCase>(
       () => AdcionarCarroUseCase(get<CarroRepository>()));
+  gh.factory<AlterarCarroUseCase>(
+      () => AlterarCarroUseCase(get<CarroRepository>()));
+  gh.factory<ExcluirCarroUseCase>(
+      () => ExcluirCarroUseCase(get<CarroRepository>()));
 
   gh.singleton<Dio>(dio);
   gh.singleton<SharedPreferencesManager>(SharedPreferencesManager());

@@ -1,6 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:wcars/domain/entities/carro/carro_entity.dart';
+import 'package:wcars/domain/entities/carro/config_list_carros.dart';
 import 'package:wcars/domain/usecases/carro/get_list_carros.use_case.dart';
 
 import '../../../../di/di.dart';
@@ -17,18 +18,20 @@ abstract class HomeControllerBase with Store {
   final _getCarros = getIt.get<GetListCarrosUseCase>();
 
   ini() {
-    getListCarros(1);
+    getListCarros(null);
   }
 
   @observable
-  ResourceData<List<CarroEntity>> carros =
-      const ResourceData(status: Status.initial, data: []);
+  ResourceData<ConfigList> carros = const ResourceData(status: Status.initial);
 
   @observable
   List<CarroEntity> listCarrosAux = [];
 
+  @observable
+  ConfigList? config;
+
   filterCarros(String search) {
-    listCarrosAux = carros.data!
+    listCarrosAux = carros.data!.carros
         .where((carro) =>
             carro.nome.toLowerCase().contains(search.toLowerCase()) ||
             carro.marca.contains(search.toLowerCase()) ||
@@ -37,11 +40,11 @@ abstract class HomeControllerBase with Store {
   }
 
   @action
-  getListCarros(int page) async {
-    carros = const ResourceData(status: Status.loading, data: []);
+  getListCarros(int? page) async {
+    carros = const ResourceData(status: Status.loading);
     carros = await _getCarros(page);
     if (carros.status == Status.success) {
-      listCarrosAux = carros.data!;
+      listCarrosAux = carros.data!.carros;
     }
   }
 }
