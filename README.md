@@ -15,7 +15,8 @@ Instalação
  Senha:  123456
 
  - Observação
- Em anexo no email segue uma collection com as possiveis requisições.
+ Segue link da collection com as possiveis requisições.
+ https://elements.getpostman.com/redirect?entityId=27479389-3525a851-e542-41a0-8f47-d49cb272fefd&entityType=collection
  Cadastro de adm
  Listagem, Alteração, Cadastro e Exclusão de carros
 
