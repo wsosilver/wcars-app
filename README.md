@@ -1,48 +1,24 @@
-# wcars
+WCars
+
+App vitrine para loja de carros com painel administrativo
 
 
-Flutter Modular + Clean Architecture + Repository Pattern
+Requisitos
+- Flutter 3
 
-## Design System
+Instalação
+ - Flutter pub get
+ - flutter pub run build_runner watch --delete-conflicting-outputs
 
-### Espaçamentos:
+ Credenciais de primeiro acesso
+ Usuario: wsilveira
+ Senha:  123456
 
-Tela:
+ - Observação
+ Em anexo no email segue uma collection com as possiveis requisições.
+ Cadastro de adm
+ Listagem, Alteração, Cadastro e Exclusão de carros
 
-Padding vertical: 26.h
-Padding horizontal: 26.w
+Observação acessar o arquivo lib/data/remote/custom_dio.dart e alterar o ip que aponta para o backend local.
+EX:. _dio.options.baseUrl = "http://192.168.0.8:3000/";
 
-Textos:
-
-Espaçamento entre textos na vertical: 16.w
-Espaçamento entre textos na horizontal: 36.h
-
-Botoes:
-
-## Camadas:
-
-App
-Domain
-Data
-
-## App:
-
-Criação de toda a parte visual
-
-## Domain
-
-Camada de faz a comunicação do front com o back
-
-## Data
-
-Camada responsável por obter os dados, sejam eles remotos ou do database local (sharedpreferences)
-
-### Passos para construção
-
-1. Criar o Entity (/domain/entities)
-2. Criar o Data Source (/data/datasource)
-3. Criar o Repositorio (/domain/repositories)
-4. Criar a Implementacao do Repositorio (/data/repositories)
-5. Criar o Use Case (domain/usecases)
-6. Registrar o Use Case, Repository, DataSources no GetIt (/di/dio_config)
-7. Fazer a chamada na view/pages

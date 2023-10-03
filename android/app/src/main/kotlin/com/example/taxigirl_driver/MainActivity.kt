@@ -1,4 +1,4 @@
-package br.com.cerus.CerusGarantia
+package br.com.cerus.WCars
 
 import io.flutter.embedding.android.FlutterActivity
 

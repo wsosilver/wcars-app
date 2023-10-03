@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.cerus.CerusGarantia">
+    package="br.com.cerus.WCars">
    <application
         android:label="Cerus Garantia"
         android:name="${applicationName}"
